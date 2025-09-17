@@ -1,40 +1,46 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: lightgrey;
-}
-.card {
-  width: 300px;
-  height: 400px;
-  background-color: red;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+body {
+    background-color: lightgrey;
+    /* background color must be separate from the rest as im not applying it to everything */
 }
 
+body, *{
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    box-sizing: border-box;
+}
 .card {
-  width: 20%;
-  height: 200px;
-  background-color: green;
-  margin: 20px auto;
-  justify-content: space-around;
+    width: 22%; 
+    height: 500px;
+    background-color: green;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.card-img {
+    width: 100%;
+    height:50%;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
 }
 
 .container {
-  width: 90vw;
-  background-color: aqua;
-  display: flex;
-  margin: 25px auto;
-  align-items: flex-end;
-  justify-content: space-around;
-  /* extra space on left and right of each print-color-adjust
+    width: 90vw;
+    
+    background-color: lightgrey;    
+    display: flex;
+    margin: 25px auto;
+    /* auto automatically calculates equal margins on both sides */
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* extra space on left and right of each print-color-adjust
     space-between gives space between the cards but not on the edges */
-  flex-wrap: wrap;
+   
+    /* wraps the cards around onto the next line if there are too many to fit on one line */
+    /* The combination of .container's display: flex; flex-wrap: wrap; and .card's width: 20%; causes the cards to wrap into multiple rows, typically resulting in 4 cards per row (if margins and padding allow), and 3 rows for 12 cards. */
 }
