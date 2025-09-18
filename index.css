@@ -1,5 +1,5 @@
 body {
-    background-color: lightgrey;
+    background-color: lightpink;
     /* background color must be separate from the rest as im not applying it to everything */
 }
 
@@ -12,12 +12,14 @@ body, *{
 .card {
     width: 22%; 
     height: 500px;
-    background-color: green;
+    background-color: lightblue;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border-radius: 10px;
+
 }
 .card-img {
     width: 100%;
@@ -26,12 +28,58 @@ body, *{
     border-radius: 10px;
     margin-bottom: 15px;
     object-fit: cover;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
+
+.button {
+    padding: 10px 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    /* Rounds the corners of the button by 5 pixels, making it look softer. */
+
+    /*font-size: 1.2rem; Increases the button’s text size to 1.2 times the root element’s font size, making it more readable. */
+    cursor: pointer;
+    /* Changes the mouse cursor to a pointer (hand) when hovering, indicating it’s clickable. */
+
+    /*transition: background 0.2s; Smoothly animates changes to the background property over 0.2 seconds (useful if you add a hover effect). */
+
+}
+
+.button:hover {
+    background-color: #ff1493;
+}
+
+.card-title {
+    font-weight: 100;
+    color: black;
+    font-style: italic;
+    font-size: 50px;
+    align-items: center;
+
+}
+/* 
+@media screen and (max-width:800px){
+    .card {
+        width:100%
+    }
+    .container {
+        background-color: red;
+    }
+
+@media screen and (max-width:600px) {
+    .container {
+        background-color: green;
+    }
+}} */
+
 
 .container {
     width: 90vw;
-    
-    background-color: lightgrey;    
+    background-color: lightpink;    
     display: flex;
     margin: 25px auto;
     /* auto automatically calculates equal margins on both sides */
