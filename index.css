@@ -1,14 +1,26 @@
 body {
     background-color: lightpink;
+    font-size: 40px;
+
     /* background color must be separate from the rest as im not applying it to everything */
 }
 
 body, *{
     margin: 0;
     padding: 0;
-    font-size: 10px;
     box-sizing: border-box;
+    align-items: center;
 }
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 30px;
+}
+
 .card {
     width: 22%; 
     height: 500px;
@@ -32,35 +44,38 @@ body, *{
     justify-content: space-around;
     align-items: center;
 }
-
-.button {
+.buy-btn {
+    font-size: 20px; 
     padding: 10px 20px;
-    background-color: #ff69b4;
+    background-color: orangered;
     color: white;
     border: none;
     border-radius: 5px;
-    /* Rounds the corners of the button by 5 pixels, making it look softer. */
-
-    /*font-size: 1.2rem; Increases the button’s text size to 1.2 times the root element’s font size, making it more readable. */
     cursor: pointer;
-    /* Changes the mouse cursor to a pointer (hand) when hovering, indicating it’s clickable. */
-
-    /*transition: background 0.2s; Smoothly animates changes to the background property over 0.2 seconds (useful if you add a hover effect). */
-
+    transition: background 0.2s;
 }
 
-.button:hover {
+.buy-btn:hover {
+    transform: scale(1.1);
     background-color: #ff1493;
 }
+
+
+/* a,
+a:visited,
+a:active {
+    code (have same code for all these functions)
+} */
+
 
 .card-title {
     font-weight: 100;
     color: black;
     font-style: italic;
-    font-size: 50px;
+    font-size: 30px;
     align-items: center;
-
 }
+
 /* 
 @media screen and (max-width:800px){
     .card {
