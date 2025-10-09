@@ -1,24 +1,52 @@
 const rackets = [
+
     {
-        name: "Babolot Pure Strike",
-        price: 59,
+        name: "Wilson Pro Staff",
+        price: 79,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Wilson",
+        src : "https://www.wilson.com/en-us/tennis/tennis-rackets/media_1f64860413082850951fe50dfb684746385dc6863.jpg?width=750&format=jpg&optimize=medium",
+        alt : "Wilson Pro Staff"
     },
 
         {
-        name: "Babolot Pure Strike",
-        price: 59,
+        name: "Wilson Blade",
+        price: 49,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Wilson",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=WBPRO6-1.jpg&nw=455",
+        alt : "Wilson Blade"
     },
     
         {
-        name: "Babolot Pure Strike",
+        name: "Wilson Clash",
+        price: 49,
+        inStock: true,
+        brand: "Wilson",
+        src : "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSqSPlHT8Gj8GBXnwhEb4C89UZGRzWXoDWg9PF-YGtPIPi7BqLia9i3SXgOSvBDg3Hv7u8eoxcD7_-VqRSX1kaYKh-UlvgdtWEzGAlLrcxRihIjWp98czLKkw",
+        alt : "Wilson Clash"
+    },
+
+        {
+        name: "Wilson Ultra",
+        price: 49,
+        inStock: true,
+        brand: "Wilson",
+        src : "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSOpUq0s-DgDZNGj-p19GNiZl7YwuQg94YPR3kl05k3_XUY2kkDoHW4HTKeSPwUONo_evpomynvY72nDgoteJsSCS-Vawljm9AgBPJZbl1PXnf4YnCIFLlU",
+        alt : "Wilson Ultra"
+    },
+
+        {
+        name: "Babolat Pure Aero",
+        price: 59,
+        inStock: true,
+        brand: "Babolot",
+        src : "https://tennisexpress.com/cdn/shop/files/B101499-370-x.jpg?v=1752851049&width=1220",
+        alt : "Babolat Pure Aero"
+    },
+
+        {
+        name: "Babolat Pure Drive",
         price: 59,
         inStock: true,
         brand: "Babolot",
@@ -31,93 +59,136 @@ const rackets = [
         price: 59,
         inStock: true,
         brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=PS1620-1.jpg&nw=455",
+        alt : "Babolat Pure Strike"
     },
 
         {
-        name: "Babolot Pure Strike",
-        price: 59,
+        name: "Babolot Boost",
+        price: 39,
         inStock: true,
         brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=BABOAP-1.jpg&nw=455",
+        alt : "Babolat Boost"
     },
 
         {
-        name: "Babolot Pure Strike",
+        name: "Yonex Ezone",
         price: 59,
         inStock: true,
-        brand: "Babolot",
+        brand: "Yonex",
         src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        alt : "Yonex Ezone"
     },
 
         {
-        name: "Babolot Pure Strike",
+        name: "Yonex VCore",
         price: 59,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
-    },
-
-
-        {
-        name: "Babolot Pure Strike",
-        price: 59,
-        inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Yonex",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=VCR100-1.jpg&nw=455",
+        alt : "Yonex Vcore"
     },
 
         {
-        name: "Babolot Pure Strike",
-        price: 59,
+        name: "Yonex Astrel",
+        price: 49,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Yonex",
+        src : "https://thetennisshoponline.com/wp-content/uploads/2024/01/yonex-astrel-105-web.jpg",
+        alt : "Yonex Astrel"
     },
 
         {
-        name: "Babolot Pure Strike",
-        price: 59,
+        name: "Yonex Percept",
+        price: 49,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Yonex",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=PERC-1.jpg&nw=540",
+        alt : "Yonex Percept"
     },
 
         {
-        name: "Babolot Pure Strike",
-        price: 59,
+        name: "Dunlop FX 500",
+        price: 49,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Dunlop",
+        src : "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSN7_q99lcvOBgmZf6PiicAka-V9sVDta9-PkJ5PuCbgZMmXswRqsr7Z_vW9EKUIMYrODntlX6nZry0rfFXEGl_vb4DdaeebJmNrLrb6JuDrDOHDwzUBxeJ",
+        alt : "Dunlop FX 500"
     },
 
-        {
-        name: "Babolot Pure Strike",
-        price: 59,
+            {
+        name: "Dunlop SX 300",
+        price: 49,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Dunlop",
+        src : "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ9MEwbmzHPuc4NyWEpNaIBgjRjIurEI75SYDcEemIOmCAPIaDYdTXV8eE-TEJ7E-DLQOXA53Cayw1fC_EPBmmQrE1vNboPF1M-mRp67fihI3VjzKcuTfssaw",
+        alt : "Dunlop SX 300"
     },
 
-        {
-        name: "Babolot Pure Strike",
-        price: 59,
+            {
+        name: "Dunlop CX 400",
+        price: 49,
         inStock: true,
-        brand: "Babolot",
-        src : "https://tse3.mm.bing.net/th/id/OIP.xzRQubpnNOIpMbKdyBxbjwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-        alt : "Babolat Pure Drive"
+        brand: "Dunlop",
+        src : "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSeVuePyp6K1m1badCq-Oaa7wq2Rq-J6c9smvBzhDvjHu9qvznNNqiWpTxhmSrPfLXJvXY5us3J9jYxUo2rtU3Roi37t785cTzpFE49L7IlsmEi7yBBdUfZbg",
+        alt : "Dunlop FX 500"
     },
 
+            {
+        name: "Dunlop LX 1000",
+        price: 49,
+        inStock: true,
+        brand: "Dunlop",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=LX1000-1.jpg&nw=455",
+        alt : "Dunlop LX 1000"
+    },
+
+            {
+        name: "Head Speed",
+        price: 69,
+        inStock: true,
+        brand: "Head",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=HSPDML-1.jpg&nw=455",
+        alt : "Head Speed"
+    },
+            {
+        name: "Head Extreme",
+        price: 49,
+        inStock: true,
+        brand: "Head",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=HREM24-1.jpg&nw=455",
+        alt : "Head Extreme"
+    },
+            {
+        name: "Head Radical",
+        price: 49,
+        inStock: true,
+        brand: "Head",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=XCEEDR-1.jpg&nw=455",
+        alt : "Head Radical"
+    },
+            {
+        name: "Head Gravity",
+        price: 49,
+        inStock: true,
+        brand: "Head",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=HGMPG-1.jpg&nw=455",
+        alt : "Head Gravity"
+    },
 ];
 
-sneakers.forEach((rackets) => makeCard(rackets));
-function makeCard(rackets)
+// sneakers.forEach((rackets) => makeCard(rackets));
+// function makeCard(rackets)
+
+//create inject function
+function inject(item){
+    //do something
+    const container = document.querySelector(".container");
+    container.insertAdjacentHTML("afterbegin", `<h1>${item.name}</h1>`)
+    //query the container
+    //using adjacent html push card into container
+}
+CSSMathProduct.forEach((product)=> inject(product));
+//loop through items
+
