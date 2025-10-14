@@ -182,13 +182,47 @@ const rackets = [
 // function makeCard(rackets)
 
 //create inject function
-function inject(item){
+function inject(racket){
     //do something
     const container = document.querySelector(".container");
-    container.insertAdjacentHTML("afterbegin", `<h1>${item.name}</h1>`)
+    container.insertAdjacentHTML("afterbegin", `<div class="card">
+        <img
+          class="card-img"
+          src= ${racket.src}
+          alt="Head Gravity"
+        />
+        <h3 class="card-title">${racket.name}</h3>
+        <h5 class="price">$${racket.price}</h5>
+          <button class="buy-btn">Buy Now</button>
+        </a>
+      </div> `)
     //query the container
     //using adjacent html push card into container
 }
-CSSMathProduct.forEach((product)=> inject(product));
+rackets.forEach((racket)=> inject(racket));
 //loop through items
 
+
+function addToCart() {
+    const buttons = document.querySelectorAll("add to cart")
+    const btnArray = Array.from(buttons);
+    btnArray.forEarch((btn) =>
+        btn.addEventListener("click", function (event) {
+            console.log(
+                event.target.closest(".card").getAttribute("data-id"));
+                //replace .display-card and data-id with wtv ur own
+                event.target.textContent;
+//find out what specific item you're adding to card
+//closest to find out the name of the card
+        })
+
+    ); 
+    //find the items in the arrat
+    //take that object and pushes into cart
+
+}
+getCards();
+
+//made an array
+//using forEach to put array of cards on screen
+//work on add to cart
