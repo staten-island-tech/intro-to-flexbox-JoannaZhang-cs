@@ -196,6 +196,10 @@ function inject(racket){
           <button class="buy-btn">Buy Now</button>
         </a>
       </div> `)
+      
+    //   const html = `<div class ="card" data-title=${item.name}` >
+
+
     //query the container
     //using adjacent html push card into container
 }
@@ -206,7 +210,7 @@ rackets.forEach((racket)=> inject(racket));
 function addToCart() {
     const buttons = document.querySelectorAll("add to cart")
     const btnArray = Array.from(buttons);
-    btnArray.forEarch((btn) =>
+    btnArray.forEach((btn) =>
         btn.addEventListener("click", function (event) {
             console.log(
                 event.target.closest(".card").getAttribute("data-id"));
@@ -220,7 +224,7 @@ function addToCart() {
     //find the items in the array
     //take that object and pushes into cart
 
-}
+}                                                                                                                      
 getCards();
 
 //made an array
