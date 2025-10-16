@@ -217,7 +217,7 @@ function addToCart() {
         })
 
     ); 
-    //find the items in the arrat
+    //find the items in the array
     //take that object and pushes into cart
 
 }
