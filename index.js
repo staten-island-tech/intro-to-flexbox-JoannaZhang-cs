@@ -210,7 +210,7 @@ rackets.forEach((racket)=> inject(racket));
 function addToCart() {
     const buttons = document.querySelectorAll("add to cart")
     const btnArray = Array.from(buttons);
-    btnArray.forEach((btn) =>
+    btnArray.forEach((btn, index) =>
         btn.addEventListener("click", function (event) {
             console.log(
                 event.target.closest(".card").getAttribute("data-id"));
@@ -225,7 +225,30 @@ function addToCart() {
     //take that object and pushes into cart
 
 }                                                                                                                      
-getCards();
+addToCart();
+
+function addToCart(){
+    const buttons= document.querySelectorAll(".buy-btn")
+    //querySelectorAll
+    const btnArr= Array.from(buttons);
+    const cart= [];
+    btnArr.forEach((btn)=>
+        btn.addEventListener("click", function(event){
+            const id= event.target.closest(".card").getAttribute("data-id");
+            console.log('Add to cart:', id);
+            const item= rackets.find(r=> r.name === id);
+            if(item){
+                cart.push(item);
+                console.log('Carted:', cart);
+            }
+        })
+
+    ); 
+    //find the items in the array
+    //take that object and pushes into cart
+
+}
+addToCart();
 
 //made an array
 //using forEach to put array of cards on screen
