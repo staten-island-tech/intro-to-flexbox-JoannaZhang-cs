@@ -1,3 +1,6 @@
+
+
+
 const rackets = [
 
     {
@@ -178,8 +181,8 @@ const rackets = [
     },
 ];
 
-// sneakers.forEach((rackets) => makeCard(rackets));
-// function makeCard(rackets)
+rackets.forEach((rackets) => inject(rackets));
+// function inject(rackets)
 
 //create inject function
 function inject(racket){
@@ -207,48 +210,132 @@ rackets.forEach((racket)=> inject(racket));
 //loop through items
 
 
-function addToCart() {
-    const buttons = document.querySelectorAll("add to cart")
-    const btnArray = Array.from(buttons);
-    btnArray.forEach((btn, index) =>
-        btn.addEventListener("click", function (event) {
-            console.log(
-                event.target.closest(".card").getAttribute("data-id"));
-                //replace .display-card and data-id with wtv ur own
-                event.target.textContent;
-//find out what specific item you're adding to card
-//closest to find out the name of the card
-        })
 
-    ); 
-    //find the items in the array
-    //take that object and pushes into cart
+function filterByGenre (genre) {
+    const cards = document.querySelecterALl("racket.card")
+    cards.forEach((card)=> {
+        const cardCategory = card.getAttribute("data-genre");
+        if (genre === cardCategory) {
+            card.style.display = ""; //contextual: could be ""(string), "block", "flex"
+        } else {
+            card.style.display = "none";
 
-}                                                                                                                      
-addToCart();
-
-function addToCart(){
-    const buttons= document.querySelectorAll(".buy-btn")
-    //querySelectorAll
-    const btnArr= Array.from(buttons);
-    const cart= [];
-    btnArr.forEach((btn)=>
-        btn.addEventListener("click", function(event){
-            const id= event.target.closest(".card").getAttribute("data-id");
-            console.log('Add to cart:', id);
-            const item= rackets.find(r=> r.name === id);
-            if(item){
-                cart.push(item);
-                console.log('Carted:', cart);
-            }
-        })
-
-    ); 
-    //find the items in the array
-    //take that object and pushes into cart
-
+        }
+    });
 }
-addToCart();
+
+
+// 1) fix inject to include data-type and data-id, and use proper template quoting
+function inject(racket){
+    const container = document.querySelector(".container");
+    container.insertAdjacentHTML("beforeend", `
+        <div class="card" data-type="${racket.brand}" data-id="${racket.name}">
+            <img class="card-img" src="${racket.src}" alt="${racket.alt}" />
+            <h3 class="card-title">${racket.name}</h3>
+            <h5 class="price">$${racket.price}</h5>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+    `);
+}
+
+// render cards (call once)
+rackets.forEach(racket => inject(racket));
+
+// 2) filtering function
+function filterByType(type) {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+        if (type === "all" || card.dataset.type === type) {
+            card.style.display = ""; // reset to default
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+// 3) create filter buttons (dynamically) and wire up clicks
+function createFilterButtons() {
+    // ensure a place for buttons in DOM; change selector if you already have one
+    let filters = document.querySelector(".filters");
+    if (!filters) {
+        filters = document.createElement("div");
+        filters.className = "filters";
+        document.body.insertBefore(filters, document.querySelector(".container"));
+    }
+
+    // unique types (brands)
+    const types = Array.from(new Set(rackets.map(r => r.brand)));
+    // "All" button
+    const allBtn = document.createElement("button");
+    allBtn.textContent = "All";
+    allBtn.dataset.type = "all";
+    allBtn.classList.add("active");
+    filters.appendChild(allBtn);
+
+    types.forEach(t => {
+        const btn = document.createElement("button");
+        btn.textContent = t;
+        btn.dataset.type = t;
+        filters.appendChild(btn);
+    });
+
+    filters.addEventListener("click", (e) => {
+        if (e.target.tagName !== "BUTTON") return;
+        // toggle active class visually
+        filters.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+        e.target.classList.add("active");
+        filterByType(e.target.dataset.type);
+    });
+}
+
+// call after cards are rendered
+createFilterButtons();
+
+
+
+
+// function addToCart() {
+//     const buttons = document.querySelectorAll("add to cart")
+//     const btnArray = Array.from(buttons);
+//     btnArray.forEach((btn, index) =>
+//         btn.addEventListener("click", function (event) {
+//             console.log(
+//                 event.target.closest(".card").getAttribute("data-id"));
+//                 //replace .display-card and data-id with wtv ur own
+//                 event.target.textContent;
+// //find out what specific item you're adding to card
+// //closest to find out the name of the card
+//         })
+
+//     ); 
+//     //find the items in the array
+//     //take that object and pushes into cart
+
+// }                                                                                                                      
+// addToCart();
+
+// function addToCart(){
+//     const buttons= document.querySelectorAll(".buy-btn")
+//     //querySelectorAll
+//     const btnArr= Array.from(buttons);
+//     const cart= [];
+//     btnArr.forEach((btn)=>
+//         btn.addEventListener("click", function(event){
+//             const id= event.target.closest(".card").getAttribute("data-id");
+//             console.log('Add to cart:', id);
+//             const item= rackets.find(r=> r.name === id);
+//             if(item){
+//                 cart.push(item);
+//                 console.log('Carted:', cart);
+//             }
+//         })
+
+//     ); 
+//     //find the items in the array
+//     //take that object and pushes into cart
+
+// }
+// addToCart();
 
 //made an array
 //using forEach to put array of cards on screen
