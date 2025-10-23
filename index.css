@@ -84,6 +84,23 @@ h5 {
   background-color: #ff1493;
 }
 
+.filter-btn {
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: hotpink;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filter-btn {
+  transform: scale(1.1);
+  background-color: #ff1493;
+}
+
+
 /* a,
 a:visited,
 a:active {

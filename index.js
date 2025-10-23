@@ -182,7 +182,6 @@ const rackets = [
 ];
 
 rackets.forEach((rackets) => inject(rackets));
-// function inject(rackets)
 
 //create inject function
 function inject(racket){
@@ -340,3 +339,33 @@ createFilterButtons();
 //made an array
 //using forEach to put array of cards on screen
 //work on add to cart
+
+let prod = {
+    title: "Cooking with Fire",
+    author: "Grace Turner",
+    genre: "Non-fiction",
+    year: 2016,
+}
+const cart = [];
+function createCartObject(product){
+    const cartProduct = {...product, quantity: 1};
+    return cartProduct;
+    //... is "spread operator". copies all elements of the proudct without rewriting it
+}
+
+function checkCart(prod){
+    if (!prod) {
+        return;
+    }
+    //create cart object here
+    const cartProduct = {...prod, quantity: 1};
+    const found = cart.find((cartItem) => cartItem === cartProduct.title);
+    if(found){
+        found.quantity += 1
+    } else {
+        cart.push(prod);
+    }
+}
+checkCart(prod);
+checkCart(prod);
+console.log(cart);
