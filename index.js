@@ -210,18 +210,6 @@ rackets.forEach((racket)=> inject(racket));
 
 
 
-function filterByGenre (genre) {
-    const cards = document.querySelecterALl("racket.card")
-    cards.forEach((card)=> {
-        const cardCategory = card.getAttribute("data-genre");
-        if (genre === cardCategory) {
-            card.style.display = ""; //contextual: could be ""(string), "block", "flex"
-        } else {
-            card.style.display = "none";
-
-        }
-    });
-}
 
 
 // 1) fix inject to include data-type and data-id, and use proper template quoting
@@ -240,55 +228,51 @@ function inject(racket){
 // render cards (call once)
 rackets.forEach(racket => inject(racket));
 
-// 2) filtering function
-function filterByType(type) {
-    const cards = document.querySelectorAll(".card");
-    cards.forEach(card => {
-        if (type === "all" || card.dataset.type === type) {
-            card.style.display = ""; // reset to default
+
+function filterByGenre (brand) {
+    const cards = document.querySelectorAll(".card")
+
+    cards.forEach((card)=> {
+        const cardCategory = card.getAttribute("data-type");
+        console.log(cardCategory)
+        if (brand === cardCategory) {
+            card.style.display = ""; //contextual: could be ""(string), "block", "flex"
         } else {
             card.style.display = "none";
+
         }
     });
 }
-
+filterByGenre("Yonex")
 // 3) create filter buttons (dynamically) and wire up clicks
-function createFilterButtons() {
-    // ensure a place for buttons in DOM; change selector if you already have one
-    let filters = document.querySelector(".filters");
-    if (!filters) {
-        filters = document.createElement("div");
-        filters.className = "filters";
-        document.body.insertBefore(filters, document.querySelector(".container"));
-    }
 
-    // unique types (brands)
-    const types = Array.from(new Set(rackets.map(r => r.brand)));
-    // "All" button
-    const allBtn = document.createElement("button");
-    allBtn.textContent = "All";
-    allBtn.dataset.type = "all";
-    allBtn.classList.add("active");
-    filters.appendChild(allBtn);
+//     // unique types (brands)
+//     const types = Array.from(new Set(rackets.map(r => r.brand)));
+//     // "All" button
+//     const allBtn = document.createElement("button");
+//     allBtn.textContent = "All";
+//     allBtn.dataset.type = "all";
+//     allBtn.classList.add("active");
+//     filters.appendChild(allBtn);
 
-    types.forEach(t => {
-        const btn = document.createElement("button");
-        btn.textContent = t;
-        btn.dataset.type = t;
-        filters.appendChild(btn);
-    });
+//     types.forEach(t => {
+//         const btn = document.createElement("button");
+//         btn.textContent = t;
+//         btn.dataset.type = t;
+//         filters.appendChild(btn);
+//     });
 
-    filters.addEventListener("click", (e) => {
-        if (e.target.tagName !== "BUTTON") return;
-        // toggle active class visually
-        filters.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-        e.target.classList.add("active");
-        filterByType(e.target.dataset.type);
-    });
-}
+//     filters.addEventListener("click", (e) => {
+//         if (e.target.tagName !== "BUTTON") return;
+//         // toggle active class visually
+//         filters.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+//         e.target.classList.add("active");
+//         filterByType(e.target.dataset.type);
+//     });
+// }
 
 // call after cards are rendered
-createFilterButtons();
+
 
 
 
@@ -341,11 +325,14 @@ createFilterButtons();
 //work on add to cart
 
 let prod = {
-    title: "Cooking with Fire",
-    author: "Grace Turner",
-    genre: "Non-fiction",
-    year: 2016,
-}
+        name: "Head Speed",
+        price: 69,
+        inStock: true,
+        brand: "Head",
+        src : "https://img.tennis-warehouse.com/watermark/rs.php?path=HSPDML-1.jpg&nw=455",
+        alt : "Head Speed"
+    }
+
 const cart = [];
 function createCartObject(product){
     const cartProduct = {...product, quantity: 1};
