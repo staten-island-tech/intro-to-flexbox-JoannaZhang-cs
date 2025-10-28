@@ -57,7 +57,7 @@ h5 {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   padding: 15px;
 }
-.card-img {
+.display-src {
   width: 100%;
   height: 50%;
   align-items: center;
@@ -95,11 +95,10 @@ h5 {
   transition: background 0.2s;
 }
 
-.filter-btn {
+.filter-btn:hover {
   transform: scale(1.1);
   background-color: #ff1493;
 }
-
 
 /* a,
 a:visited,
@@ -136,7 +135,7 @@ a:active {
   display: flex;
   margin: 25px auto;
   /* auto automatically calculates equal margins on both sides */
-  align-items: flex-end;
+  align-items: flex-start; /* items pinned to the top compared to bottom (flex-end) */
   justify-content: space-around;
   flex-wrap: wrap;
   /* extra space on left and right of each print-color-adjust

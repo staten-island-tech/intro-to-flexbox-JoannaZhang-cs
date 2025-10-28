@@ -1,3 +1,11 @@
+const DOMSelectors = {
+  name: document.getElementById("name"),
+  price: document.getElementById("price"),
+  src: document.getElementById("src"),
+  brand: document.getElementById("brand"),
+  display: document.querySelector(".container"),
+};
+
 const rackets = [
   {
     id: 1,
@@ -10,7 +18,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 2,
     name: "Wilson Blade",
     price: 49,
     inStock: true,
@@ -20,7 +28,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 3,
     name: "Wilson Clash",
     price: 49,
     inStock: true,
@@ -30,7 +38,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 4,
     name: "Wilson Ultra",
     price: 49,
     inStock: true,
@@ -40,7 +48,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 5,
     name: "Babolat Pure Aero",
     price: 59,
     inStock: true,
@@ -50,7 +58,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 6,
     name: "Babolat Pure Drive",
     price: 59,
     inStock: true,
@@ -60,7 +68,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 7,
     name: "Babolot Pure Strike",
     price: 59,
     inStock: true,
@@ -70,7 +78,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 8,
     name: "Babolot Boost",
     price: 39,
     inStock: true,
@@ -80,7 +88,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 9,
     name: "Yonex Ezone",
     price: 59,
     inStock: true,
@@ -90,7 +98,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 10,
     name: "Yonex VCore",
     price: 59,
     inStock: true,
@@ -100,7 +108,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 11,
     name: "Yonex Astrel",
     price: 49,
     inStock: true,
@@ -110,7 +118,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 12,
     name: "Yonex Percept",
     price: 49,
     inStock: true,
@@ -120,7 +128,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 13,
     name: "Dunlop FX 500",
     price: 49,
     inStock: true,
@@ -130,7 +138,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 14,
     name: "Dunlop SX 300",
     price: 49,
     inStock: true,
@@ -140,7 +148,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 15,
     name: "Dunlop CX 400",
     price: 49,
     inStock: true,
@@ -150,7 +158,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 16,
     name: "Dunlop LX 1000",
     price: 49,
     inStock: true,
@@ -160,7 +168,7 @@ const rackets = [
   },
 
   {
-    id: 1,
+    id: 17,
     name: "Head Speed",
     price: 69,
     inStock: true,
@@ -169,7 +177,7 @@ const rackets = [
     alt: "Head Speed",
   },
   {
-    id: 1,
+    id: 18,
     name: "Head Extreme",
     price: 49,
     inStock: true,
@@ -178,7 +186,7 @@ const rackets = [
     alt: "Head Extreme",
   },
   {
-    id: 1,
+    id: 19,
     name: "Head Radical",
     price: 49,
     inStock: true,
@@ -187,7 +195,7 @@ const rackets = [
     alt: "Head Radical",
   },
   {
-    id: 1,
+    id: 20,
     name: "Head Gravity",
     price: 49,
     inStock: true,
@@ -198,155 +206,100 @@ const rackets = [
 ];
 
 rackets.forEach((rackets) => inject(rackets));
+createFilterButtons();
 
-//create inject function
+document.getElementById("form").addEventListener("submit", function (e) {
+  e.preventDefault(); // stops page from refreshing
+  let racket = {
+    title: document.getElementById("title").value,
+    artist: document.getElementById("artist").value,
+    url: document.getElementById("url").value,
+  };
+  inject(racket); // add to the page
+  clearFields(); // reset form inputs
+});
+
 function inject(racket) {
-  //do something
-  const container = document.querySelector(".container");
-  container.insertAdjacentHTML(
+  DOMSelectors.display.insertAdjacentHTML(
     "afterbegin",
-    `<div class="card">
-        <img
-          class="card-img"
-          src= ${racket.src}
-          alt="Head Gravity"
-        />
-        <h3 class="card-title">${racket.name}</h3>
-        <h5 class="price">$${racket.price}</h5>
-          <button class="buy-btn">Buy Now</button>
-        </a>
-      </div> `
-  );
-
-  //   const html = `<div class ="card" data-title=${item.name}` >
-
-  //query the container
-  //using adjacent html push card into container
-}
-rackets.forEach((racket) => inject(racket));
-//loop through items
-
-// 1) fix inject to include data-type and data-id, and use proper template quoting
-function inject(racket) {
-  const container = document.querySelector(".container");
-  container.insertAdjacentHTML(
-    "beforeend",
-    `
-        <div class="card" data-type="${racket.brand}" data-id="${racket.name}">
-            <img class="card-img" src="${racket.src}" alt="${racket.alt}" />
-            <h3 class="card-title">${racket.name}</h3>
-            <h5 class="price">$${racket.price}</h5>
-            <button class="buy-btn">Buy Now</button>
-        </div>
-    `
+    `<div class="card" data-type="${racket.brand}">
+    <img class="display-src" src="${racket.src}"/>
+    <h2 class="display-brand">${racket.brand}</h2>
+    <h3 class="display-album">${racket.name}</h3>
+    <h5 class="price">$${racket.price}</h5>
+    <button class="buy-btn">Buy Now</button>
+    <button class="remove btn">Remove</button>
+    </div>`
   );
 }
 
-// render cards (call once)
+// <div class="filters">
+//   <button data-brand="all" class="active">
+//     All
+//   </button>
+//   <button data-brand="Dunlop">Wilson</button>
+//   <button data-brand="Babolot">Wilson</button>
+//   <button data-brand="Yonex">Wilson</button>
+//   <button data-brand="Wilson">Wilson</button>
+//   <button data-brand="Head">Wilson</button>
+// </div>;
+
 rackets.forEach((racket) => inject(racket));
 
-function filterByGenre(brand) {
+function createFilterButtons() {
+  const filters = document.querySelector(".filters");
+  const brands = Array.from(new Set(rackets.map((r) => r.brand))); // unique brands
+
+  // Add "All" button first
+  const allBtn = document.createElement("button");
+  allBtn.textContent = "All";
+  allBtn.dataset.brand = "all";
+  allBtn.classList.add("active");
+  filters.appendChild(allBtn);
+
+  // Create one button per brand
+  brands.forEach((brand) => {
+    const btn = document.createElement("button");
+    btn.textContent = brand;
+    btn.dataset.brand = brand;
+    filters.appendChild(btn);
+  });
+
+  // Handle clicks on buttons
+  filters.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+
+    // toggle active styling
+    filters
+      .querySelectorAll("button")
+      .forEach((b) => b.classList.remove("active"));
+    e.target.classList.add("active");
+
+    const brand = e.target.dataset.brand;
+    filterByBrand(brand);
+  });
+}
+
+function filterByBrand(brand) {
   const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
-    const cardCategory = card.getAttribute("data-type");
-    console.log(cardCategory);
-    if (brand === cardCategory) {
+    const cardBrand = card.getAttribute("data-type");
+    console.log(cardBrand);
+    if (brand === "all" || cardBrand === brand) {
+      // if (brand === "all" || cardBrand === brand) {
+      // card.style.display = "block";
       card.style.display = ""; //contextual: could be ""(string), "block", "flex"
     } else {
       card.style.display = "none";
     }
   });
 }
-filterByGenre("Yonex");
-// 3) create filter buttons (dynamically) and wire up clicks
-
-//     // unique types (brands)
-//     const types = Array.from(new Set(rackets.map(r => r.brand)));
-//     // "All" button
-//     const allBtn = document.createElement("button");
-//     allBtn.textContent = "All";
-//     allBtn.dataset.type = "all";
-//     allBtn.classList.add("active");
-//     filters.appendChild(allBtn);
-
-//     types.forEach(t => {
-//         const btn = document.createElement("button");
-//         btn.textContent = t;
-//         btn.dataset.type = t;
-//         filters.appendChild(btn);
-//     });
-
-//     filters.addEventListener("click", (e) => {
-//         if (e.target.tagName !== "BUTTON") return;
-//         // toggle active class visually
-//         filters.querySelectorAll("button").forEach(b => b.classList.remove("active"));
-//         e.target.classList.add("active");
-//         filterByType(e.target.dataset.type);
-//     });
-// }
-
-// call after cards are rendered
-
-// function addToCart() {
-//     const buttons = document.querySelectorAll("add to cart")
-//     const btnArray = Array.from(buttons);
-//     btnArray.forEach((btn, index) =>
-//         btn.addEventListener("click", function (event) {
-//             console.log(
-//                 event.target.closest(".card").getAttribute("data-id"));
-//                 //replace .display-card and data-id with wtv ur own
-//                 event.target.textContent;
-// //find out what specific item you're adding to card
-// //closest to find out the name of the card
-//         })
-
-//     );
-//     //find the items in the array
-//     //take that object and pushes into cart
-
-// }
-// addToCart();
-
-// function addToCart(){
-//     const buttons= document.querySelectorAll(".buy-btn")
-//     //querySelectorAll
-//     const btnArr= Array.from(buttons);
-//     const cart= [];
-//     btnArr.forEach((btn)=>
-//         btn.addEventListener("click", function(event){
-//             const id= event.target.closest(".card").getAttribute("data-id");
-//             console.log('Add to cart:', id);
-//             const item= rackets.find(r=> r.name === id);
-//             if(item){
-//                 cart.push(item);
-//                 console.log('Carted:', cart);
-//             }
-//         })
-
-//     );
-//     //find the items in the array
-//     //take that object and pushes into cart
-
-// }
-// addToCart();
-
-//made an array
-//using forEach to put array of cards on screen
-//work on add to cart
-
-let prod = {
-  name: "Head Speed",
-  price: 69,
-  inStock: true,
-  brand: "Head",
-  src: "https://img.tennis-warehouse.com/watermark/rs.php?path=HSPDML-1.jpg&nw=455",
-  alt: "Head Speed",
-};
+// filterByBrand("Yonex");
 
 const cart = [];
-function createCartObject(product) {
-  const cartProduct = { ...product, quantity: 1 };
+function createCartObject(racket) {
+  const cartProduct = { ...racket, quantity: 1 };
   return cartProduct;
   //... is "spread operator". copies all elements of the proudct without rewriting it
 }
