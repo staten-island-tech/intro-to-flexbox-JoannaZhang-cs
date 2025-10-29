@@ -208,15 +208,22 @@ const rackets = [
 rackets.forEach((rackets) => inject(rackets));
 createFilterButtons();
 
+<form id="form">
+  <input id="title" name="title" />
+  <input id="artist" name="artist" />
+  <input id="url" name="url" />
+  <button type="submit">Add</button>
+</form> 
+
 document.getElementById("form").addEventListener("submit", function (e) {
-  e.preventDefault(); // stops page from refreshing
+  e.preventDefault(); //stops page from refreshing
   let racket = {
     title: document.getElementById("title").value,
     artist: document.getElementById("artist").value,
-    url: document.getElementById("url").value,
+    src: document.getElementById("url").value,
   };
-  inject(racket); // add to the page
-  clearFields(); // reset form inputs
+  inject(racket); //add to the page
+  clearFields(); //reset form inputs
 });
 
 function inject(racket) {
@@ -246,40 +253,12 @@ function inject(racket) {
 
 rackets.forEach((racket) => inject(racket));
 
-function createFilterButtons() {
-  const filters = document.querySelector(".filters");
-  const brands = Array.from(new Set(rackets.map((r) => r.brand))); // unique brands
-
-  // Add "All" button first
-  const allBtn = document.createElement("button");
-  allBtn.textContent = "All";
-  allBtn.dataset.brand = "all";
-  allBtn.classList.add("active");
-  filters.appendChild(allBtn);
-
-  // Create one button per brand
-  brands.forEach((brand) => {
-    const btn = document.createElement("button");
-    btn.textContent = brand;
-    btn.dataset.brand = brand;
-    filters.appendChild(btn);
-  });
-
-  // Handle clicks on buttons
-  filters.addEventListener("click", (e) => {
-    if (e.target.tagName !== "BUTTON") return;
-
-    // toggle active styling
-    filters
-      .querySelectorAll("button")
-      .forEach((b) => b.classList.remove("active"));
-    e.target.classList.add("active");
-
-    const brand = e.target.dataset.brand;
-    filterByBrand(brand);
-  });
+function filterBtns(){
+  //get all filter buttons by query selector       
+  //add event listener for click
+  //get data-brand let brand = event.target.getAttribute("data-brand")
+  //run filterByBrand(brand)
 }
-
 function filterByBrand(brand) {
   const cards = document.querySelectorAll(".card");
 
