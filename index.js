@@ -213,7 +213,7 @@ createFilterButtons();
   <input id="artist" name="artist" />
   <input id="url" name="url" />
   <button type="submit">Add</button>
-</form> 
+</form>;
 
 document.getElementById("form").addEventListener("submit", function (e) {
   e.preventDefault(); //stops page from refreshing
@@ -253,8 +253,8 @@ function inject(racket) {
 
 rackets.forEach((racket) => inject(racket));
 
-function filterBtns(){
-  //get all filter buttons by query selector       
+function filterBtns() {
+  //get all filter buttons by query selector
   //add event listener for click
   //get data-brand let brand = event.target.getAttribute("data-brand")
   //run filterByBrand(brand)
