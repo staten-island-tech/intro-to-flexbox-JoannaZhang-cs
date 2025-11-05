@@ -299,3 +299,59 @@ function checkCart(prod) {
 checkCart(prod);
 checkCart(prod);
 console.log(cart);
+
+// // Add to cart
+//   if (e.target.classList.contains("buy-btn")) {
+//     const id = Number(card.dataset.id);
+//     const product = rackets.find((r) => r.id === id);
+//     addToCart(product);
+//   }
+// });
+
+// // addToCart: increment quantity if exists, else add copy with quantity
+// function addToCart(product) {
+//   if (!product) return;
+//   const existing = cart.find((c) => c.id === product.id);
+//   if (existing) {
+//     existing.quantity += 1;
+//   } else {
+//     cart.push({ ...product, quantity: 1 });
+//   }
+//   renderCart();
+// }
+
+// // renderCart: simple fixed cart panel (creates if needed)
+// function renderCart() {
+//   let cartEl = document.getElementById("cart");
+//   if (!cartEl) {
+//     cartEl = document.createElement("div");
+//     cartEl.id = "cart";
+//     cartEl.style.position = "fixed";
+//     cartEl.style.right = "12px";
+//     cartEl.style.top = "12px";
+//     cartEl.style.padding = "8px";
+//     cartEl.style.background = "white";
+//     cartEl.style.border = "1px solid #ccc";
+//     cartEl.style.maxWidth = "260px";
+//     cartEl.style.zIndex = "999";
+//     document.body.appendChild(cartEl);
+//   }
+
+//   const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+//   const totalPrice = cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
+
+//   cartEl.innerHTML = `<strong>Cart (${totalQty})</strong>
+//     <div style="margin-top:6px">
+//       ${cart
+//         .map(
+//           (item) =>
+//             `<div style="margin-bottom:6px">
+//               ${item.name} x ${item.quantity} — $${item.price * item.quantity}
+//             </div>`
+//         )
+//         .join("")}
+//     </div>
+//     <div style="border-top:1px solid #eee; margin-top:6px; padding-top:6px;"><strong>Total: $${totalPrice}</strong></div>`;
+// }
+
+// // remove the broken checkCart(prod) calls from your file (they reference undefined prod)
