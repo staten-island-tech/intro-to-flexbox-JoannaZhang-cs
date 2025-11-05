@@ -277,7 +277,6 @@ checkCart(prod);
 checkCart(prod);
 console.log(cart);
 
-<<<<<<< HEAD
 // // Add to cart
 //   if (e.target.classList.contains("buy-btn")) {
 //     const id = Number(card.dataset.id);
@@ -333,30 +332,3 @@ console.log(cart);
 // }
 
 // // remove the broken checkCart(prod) calls from your file (they reference undefined prod)
-=======
-
-function filterBtns() {
-  //get all filter buttons by query selector
-  //add event listener for click
-  //get data-brand let brand = event.target.getAttribute("data-brand")
-  //run filterByBrand(brand)
-}
-function filterByBrand(brand) {
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach((card) => {
-    const cardBrand = card.getAttribute("data-type");
-    console.log(cardBrand);
-    if (brand === "all" || cardBrand === brand) {
-      // if (brand === "all" || cardBrand === brand) {
-      // card.style.display = "block";
-      card.style.display = ""; //contextual: could be ""(string), "block", "flex"
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-// filterByBrand("Yonex");
-
-
->>>>>>> 99391671e121de7421c1ff63136708556f5b97e6
