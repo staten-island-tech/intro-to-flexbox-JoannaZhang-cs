@@ -253,29 +253,6 @@ function inject(racket) {
 
 rackets.forEach((racket) => inject(racket));
 
-function filterBtns() {
-  //get all filter buttons by query selector
-  //add event listener for click
-  //get data-brand let brand = event.target.getAttribute("data-brand")
-  //run filterByBrand(brand)
-}
-function filterByBrand(brand) {
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach((card) => {
-    const cardBrand = card.getAttribute("data-type");
-    console.log(cardBrand);
-    if (brand === "all" || cardBrand === brand) {
-      // if (brand === "all" || cardBrand === brand) {
-      // card.style.display = "block";
-      card.style.display = ""; //contextual: could be ""(string), "block", "flex"
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-// filterByBrand("Yonex");
-
 const cart = [];
 function createCartObject(racket) {
   const cartProduct = { ...racket, quantity: 1 };
@@ -299,3 +276,29 @@ function checkCart(prod) {
 checkCart(prod);
 checkCart(prod);
 console.log(cart);
+
+
+function filterBtns() {
+  //get all filter buttons by query selector
+  //add event listener for click
+  //get data-brand let brand = event.target.getAttribute("data-brand")
+  //run filterByBrand(brand)
+}
+function filterByBrand(brand) {
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    const cardBrand = card.getAttribute("data-type");
+    console.log(cardBrand);
+    if (brand === "all" || cardBrand === brand) {
+      // if (brand === "all" || cardBrand === brand) {
+      // card.style.display = "block";
+      card.style.display = ""; //contextual: could be ""(string), "block", "flex"
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+// filterByBrand("Yonex");
+
+
