@@ -143,23 +143,3 @@ h5 {
   /* wraps the cards around onto the next line if there are too many to fit on one line */
   /* The combination of .container's display: flex; flex-wrap: wrap; and .card's width: 20%; causes the cards to wrap into multiple rows, typically resulting in 4 cards per row (if margins and padding allow), and 3 rows for 12 cards. */
 }
-
-.cart {
-  position: fixed;
-  right: 12px;
-  top: 12px;
-  padding: 8px;
-  background: white;
-  border: 1px solid #ccc;
-  max-width: 260px;
-  z-index: 999;
-}
-
-.remove-cart-item {
-  background: #ff6961;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 2px 6px;
-}
