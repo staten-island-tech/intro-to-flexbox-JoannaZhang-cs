@@ -1,8 +1,11 @@
+// const DOMSelectors = {
+//   name: document.getElementById("name"),
+//   price: document.getElementById("price"),
+//   src: document.getElementById("src"),
+//   brand: document.getElementById("brand"),
+//   display: document.querySelector(".container"),
+// };
 const DOMSelectors = {
-  name: document.getElementById("name"),
-  price: document.getElementById("price"),
-  src: document.getElementById("src"),
-  brand: document.getElementById("brand"),
   display: document.querySelector(".container"),
 };
 
@@ -205,41 +208,6 @@ const rackets = [
   },
 ];
 
-rackets.forEach((rackets) => inject(rackets));
-createFilterButtons();
-
-<form id="form">
-  <input id="title" name="title" />
-  <input id="artist" name="artist" />
-  <input id="url" name="url" />
-  <button type="submit">Add</button>
-</form>;
-
-document.getElementById("form").addEventListener("submit", function (e) {
-  e.preventDefault(); //stops page from refreshing
-  let racket = {
-    title: document.getElementById("title").value,
-    artist: document.getElementById("artist").value,
-    src: document.getElementById("url").value,
-  };
-  inject(racket); //add to the page
-  clearFields(); //reset form inputs
-});
-
-function inject(racket) {
-  DOMSelectors.display.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="card" data-type="${racket.brand}">
-    <img class="display-src" src="${racket.src}"/>
-    <h2 class="display-brand">${racket.brand}</h2>
-    <h3 class="display-album">${racket.name}</h3>
-    <h5 class="price">$${racket.price}</h5>
-    <button class="buy-btn">Buy Now</button>
-    <button class="remove btn">Remove</button>
-    </div>`
-  );
-}
-
 // <div class="filters">
 //   <button data-brand="all" class="active">
 //     All
@@ -251,84 +219,151 @@ function inject(racket) {
 //   <button data-brand="Head">Wilson</button>
 // </div>;
 
-rackets.forEach((racket) => inject(racket));
+// rackets.forEach((racket) => inject(racket));
+function inject(racket) {
+  DOMSelectors.display.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="card" data-type="${racket.brand}">
+      <img class="display-src" src="${racket.src}" alt="${racket.name}"/>
+      <h2 class="display-brand">${racket.brand}</h2>
+      <h3 class="display-album">${racket.name}</h3>
+      <h5 class="price">$${racket.price}</h5>
+      <button class="buy-btn">Buy Now</button>
+      <button class="remove">Remove</button>
+    </div>`
+  );
+}
+
+// const cart = [];
+// function createCartObject(racket) {
+//   const cartProduct = { ...racket, quantity: 1 };
+//   return cartProduct;
+//   //... is "spread operator". copies all elements of the proudct without rewriting it
+// }
+
+// function checkCart(prod) {
+//   if (!prod) {
+//     return;
+//   }
+//   //create cart object here
+//   const cartProduct = { ...prod, quantity: 1 };
+//   const found = cart.find((cartItem) => cartItem === cartProduct.title);
+//   if (found) {
+//     found.quantity += 1;
+//   } else {
+//     cart.push(prod);
+//   }
+// }
+// checkCart(prod);
+// checkCart(prod);
+// console.log(cart);
+
+function filterByBrand(brand) {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    const cardBrand = card.getAttribute("data-type").toLowerCase();
+    if (brand === "all" || cardBrand === brand.toLowerCase()) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+function createFilterButtons() {
+  //get all filter buttons by query selector
+  //add event listener for click
+  //get data-brand let brand = event.target.getAttribute("data-brand")
+  //run filterByBrand(brand)
+  const brands = ["All", "Wilson", "Babolot", "Yonex", "Dunlop", "Head"];
+  const filterContainer = document.createElement("div");
+  filterContainer.classList.add("filters");
+
+  brands.forEach((brand) => {
+    const btn = document.createElement("button");
+    btn.textContent = brand;
+    btn.setAttribute("data-brand", brand.toLowerCase());
+    if (brand === "All") btn.classList.add("active");
+    filterContainer.appendChild(btn);
+  });
+
+  DOMSelectors.display.before(filterContainer);
+
+  //add event listener for all buttons
+  filterContainer.addEventListener("click", function (e) {
+    if (!e.target.matches("button")) return;
+    const brand = e.target.getAttribute("data-brand");
+
+    document
+      .querySelectorAll(".filters button")
+      .forEach((b) => b.classList.remove("active"));
+    e.target.classList.add("active");
+
+    filterByBrand(brand);
+  });
+}
+
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("remove")) {
+    const card = e.target.closest(".card");
+    if (card) card.remove();
+  }
+});
 
 const cart = [];
-function createCartObject(racket) {
-  const cartProduct = { ...racket, quantity: 1 };
-  return cartProduct;
-  //... is "spread operator". copies all elements of the proudct without rewriting it
-}
 
-function checkCart(prod) {
-  if (!prod) {
-    return;
-  }
-  //create cart object here
-  const cartProduct = { ...prod, quantity: 1 };
-  const found = cart.find((cartItem) => cartItem === cartProduct.title);
-  if (found) {
-    found.quantity += 1;
+function addToCart(product) {
+  if (!product) return;
+  const existing = cart.find((item) => item.id === product.id);
+  if (existing) {
+    existing.quantity += 1;
   } else {
-    cart.push(prod);
+    cart.push({ ...product, quantity: 1 });
   }
+  renderCart();
 }
-checkCart(prod);
-checkCart(prod);
-console.log(cart);
+function renderCart() {
+  let cartEl = document.getElementById("cart");
+  if (!cartEl) {
+    cartEl = document.createElement("div");
+    cartEl.id = "cart";
+    document.body.appendChild(cartEl);
+  }
 
-// // Add to cart
-//   if (e.target.classList.contains("buy-btn")) {
-//     const id = Number(card.dataset.id);
-//     const product = rackets.find((r) => r.id === id);
-//     addToCart(product);
-//   }
-// });
+  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0
+  );
 
-// // addToCart: increment quantity if exists, else add copy with quantity
-// function addToCart(product) {
-//   if (!product) return;
-//   const existing = cart.find((c) => c.id === product.id);
-//   if (existing) {
-//     existing.quantity += 1;
-//   } else {
-//     cart.push({ ...product, quantity: 1 });
-//   }
-//   renderCart();
-// }
+  cartEl.innerHTML = `
+    <strong>Cart (${totalQty})</strong>
+    <div style="margin-top:6px">
+      ${cart
+        .map(
+          (item) => `
+          <div class="cart-item" data-id="${item.id}">
+            <span>${item.name} x ${item.quantity} — $${
+            item.price * item.quantity
+          }</span>
+          </div>`
+        )
+        .join("")}
+    </div>
+    <div class="cart-total">
+      <strong>Total: $${totalPrice}</strong>
+    </div>`;
+}
 
-// // renderCart: simple fixed cart panel (creates if needed)
-// function renderCart() {
-//   let cartEl = document.getElementById("cart");
-//   if (!cartEl) {
-//     cartEl = document.createElement("div");
-//     cartEl.id = "cart";
-//     cartEl.style.position = "fixed";
-//     cartEl.style.right = "12px";
-//     cartEl.style.top = "12px";
-//     cartEl.style.padding = "8px";
-//     cartEl.style.background = "white";
-//     cartEl.style.border = "1px solid #ccc";
-//     cartEl.style.maxWidth = "260px";
-//     cartEl.style.zIndex = "999";
-//     document.body.appendChild(cartEl);
-//   }
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("buy-btn")) {
+    const card = e.target.closest(".card");
+    const brand = card.getAttribute("data-type");
+    const name = card.querySelector(".display-album").textContent;
+    const product = rackets.find((r) => r.name === name && r.brand === brand);
+    addToCart(product);
+  }
+});
 
-//   const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
-//   const totalPrice = cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
-
-//   cartEl.innerHTML = `<strong>Cart (${totalQty})</strong>
-//     <div style="margin-top:6px">
-//       ${cart
-//         .map(
-//           (item) =>
-//             `<div style="margin-bottom:6px">
-//               ${item.name} x ${item.quantity} — $${item.price * item.quantity}
-//             </div>`
-//         )
-//         .join("")}
-//     </div>
-//     <div style="border-top:1px solid #eee; margin-top:6px; padding-top:6px;"><strong>Total: $${totalPrice}</strong></div>`;
-// }
-
-// // remove the broken checkCart(prod) calls from your file (they reference undefined prod)
+rackets.forEach((racket) => inject(racket));
+createFilterButtons();

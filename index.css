@@ -84,7 +84,32 @@ h5 {
   background-color: #ff1493;
 }
 
-.filter-btn {
+.remove {
+  background: #ff6961;
+  color: white;
+}
+
+.filters button {
+  font-size: 18px;
+  padding: 8px 16px;
+  background-color: lightgray;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters button:hover {
+  transform: scale(1.1);
+  background-color: #ff1493;
+}
+
+.filters button.active {
   font-size: 20px;
   padding: 10px 20px;
   background-color: hotpink;
@@ -95,17 +120,6 @@ h5 {
   transition: background 0.2s;
 }
 
-.filter-btn:hover {
-  transform: scale(1.1);
-  background-color: #ff1493;
-}
-
-/* a,
-a:visited,
-a:active {
-    code (have same code for all these functions)
-} */
-
 .card-title {
   font-weight: 100;
   color: black;
@@ -113,21 +127,6 @@ a:active {
   font-size: 30px;
   align-items: center;
 }
-
-/* 
-@media screen and (max-width:800px){
-    .card {
-        width:100%
-    }
-    .container {
-        background-color: red;
-    }
-
-@media screen and (max-width:600px) {
-    .container {
-        background-color: green;
-    }
-}} */
 
 .container {
   width: 90vw;
@@ -143,4 +142,24 @@ a:active {
 
   /* wraps the cards around onto the next line if there are too many to fit on one line */
   /* The combination of .container's display: flex; flex-wrap: wrap; and .card's width: 20%; causes the cards to wrap into multiple rows, typically resulting in 4 cards per row (if margins and padding allow), and 3 rows for 12 cards. */
+}
+
+.cart {
+  position: fixed;
+  right: 12px;
+  top: 12px;
+  padding: 8px;
+  background: white;
+  border: 1px solid #ccc;
+  max-width: 260px;
+  z-index: 999;
+}
+
+.remove-cart-item {
+  background: #ff6961;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
 }
